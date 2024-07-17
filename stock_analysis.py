@@ -58,7 +58,6 @@ def analyze_data(tickers, period, interval):
 def schedule_tasks(tickers):
     schedule.every(5).minutes.do(analyze_data, tickers, '1mo', '30m')
     schedule.every(10).minutes.do(analyze_data, tickers, '1mo', '1h')
-    schedule.every(20).minutes.do(analyze_data, tickers, '3mo', '2h')
     schedule.every(4).hours.do(analyze_data, tickers, '6mo', '1d')
 
 def main():
