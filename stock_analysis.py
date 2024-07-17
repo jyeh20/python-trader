@@ -47,13 +47,13 @@ def analyze_trend(ticker, df):
     return Trend.NONE
 
 def analyze_data(tickers, period, interval):
-    print(f'Analyzing data on {period} period')
+    print(f'\nAnalyzing data on {period} period and interval {interval}')
     for ticker in tickers:
         df = fetch_data(ticker, period, interval)
         if df is not None and not df.empty:
             trend = analyze_trend(ticker, df)
             if trend != Trend.NONE:
-                print(f"{ticker}: {trend.value.capitalize()} trend detected on {period} period.")
+                print(f"[{time.strftime('%I:%M:%S%p')}] {ticker}: {trend.value.capitalize()} trend detected on {period} period and {interval} interval.")
 
 def schedule_tasks(tickers):
     schedule.every(45).minutes.do(analyze_data, tickers, '5d', '1h')
