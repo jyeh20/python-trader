@@ -5,6 +5,8 @@ from datetime import datetime
 import json
 from constants import *
 import os
+import warnings
+warnings.simplefilter(action="ignore", category=FutureWarning)
 
 this_file = os.path.dirname(os.path.realpath(__file__))
 
