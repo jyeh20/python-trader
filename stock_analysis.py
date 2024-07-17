@@ -56,11 +56,10 @@ def analyze_data(tickers, period, interval):
                 print(f"[{time.strftime('%I:%M:%S%p')}] {ticker}: {trend.value.capitalize()} trend detected on {period} period and {interval} interval.")
 
 def schedule_tasks(tickers):
-    schedule.every(45).minutes.do(analyze_data, tickers, '5d', '1h')
-    schedule.every().hour.do(analyze_data, tickers, '1mo', '1h')
-    schedule.every(2).hours.do(analyze_data, tickers, '3mo', '1h')
-    schedule.every(4).hours.do(analyze_data, tickers, '6mo', '1h')
-    schedule.every().monday.do(analyze_data, tickers, '1y', '1d')
+    schedule.every(5).minutes.do(analyze_data, tickers, '1mo', '30m')
+    schedule.every(10).minutes.do(analyze_data, tickers, '1mo', '1h')
+    schedule.every(20).minutes.do(analyze_data, tickers, '3mo', '2h')
+    schedule.every(4).hours.do(analyze_data, tickers, '6mo', '1d')
 
 def main():
     tickers = read_tickers(f"{this_file}/{TICKERS_JSON_PATH}")
